@@ -22,9 +22,11 @@ class TicTacToeApp:
 
         for i in range(3):
             for j in range(3):
-                self.buttons[i][j] = tk.Button(master, text="", command=lambda row=i, col=j: self.write_it(row, col),
-                                               font=("comicsansms", 15, "bold"))
-                self.buttons[i][j].grid(row=i + 1, column=j, ipadx=40, ipady=40)
+                button = tk.Button(master, text="", command=lambda row=i, col=j: self.write_it(row, col),
+                                   font=("comicsansms", 15, "bold"))
+                button.grid(row=i + 1, column=j, ipadx=40, ipady=40)
+                button.config(bg="green")
+                self.buttons[i][j] = button
 
         self.reset_button = tk.Button(master, text="Reset", command=self.reset_game)
         self.reset_button.grid(row=4, column=1)
@@ -35,7 +37,7 @@ class TicTacToeApp:
     def write_it(self, row, col):
         button = self.buttons[row][col]
         if button['text'] == "":
-            button.config(text=self.current_player, state=tk.DISABLED)
+            button.config(text=self.current_player, state=tk.DISABLED, bg="red")
             self.master.after(1000, lambda: button.config(bg="green", state=tk.NORMAL))
             if self.check_winner():
                 self.show_winner()
@@ -48,22 +50,14 @@ class TicTacToeApp:
         self.current_player = "O" if self.current_player == "X" else "X"
 
     def check_winner(self):
-        # Check rows
-        for row in self.buttons:
-            if row[0]['text'] == row[1]['text'] == row[2]['text'] != "":
+        # Check rows, columns, and diagonals for a winner
+        for i in range(3):
+            if (self.buttons[i][0]['text'] == self.buttons[i][1]['text'] == self.buttons[i][2]['text'] != "" or
+                    self.buttons[0][i]['text'] == self.buttons[1][i]['text'] == self.buttons[2][i]['text'] != ""):
                 return True
-
-        # Check columns
-        for col in range(3):
-            if self.buttons[0][col]['text'] == self.buttons[1][col]['text'] == self.buttons[2][col]['text'] != "":
-                return True
-
-        # Check diagonals
-        if self.buttons[0][0]['text'] == self.buttons[1][1]['text'] == self.buttons[2][2]['text'] != "":
+        if (self.buttons[0][0]['text'] == self.buttons[1][1]['text'] == self.buttons[2][2]['text'] != "" or
+                self.buttons[0][2]['text'] == self.buttons[1][1]['text'] == self.buttons[2][0]['text'] != ""):
             return True
-        if self.buttons[0][2]['text'] == self.buttons[1][1]['text'] == self.buttons[2][0]['text'] != "":
-            return True
-
         return False
 
     def show_winner(self):

@@ -1,4 +1,25 @@
+#  DIAMOND SHAPE ALGORITHM  ONLY IN PY 3 
 
+
+# M R O 
+
+class X :
+    def disp(self):
+        print('display from X')
+        
+class A(X) :
+    def disp(self):
+        print('display from A')
+        
+class B(X) :
+    pass
+
+class C(B,A) :
+    pass
+        
+c_ob = C()
+c_ob.disp()
+print(C.__mro__)
 
 
 

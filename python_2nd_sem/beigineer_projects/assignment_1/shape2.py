@@ -25,6 +25,7 @@ rec = Rectangle(l,b)
 area = rec.area()
 peri = rec.perimeter()
 
+
 print(f'area of rectangle is {area}')
 print(f'perimeter of rectangle is {peri}')
     

@@ -1,0 +1,80 @@
+
+import tkinter as tk
+
+class TicTacToeApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Tic Tac Toe")
+
+        self.label1 = tk.Label(master, text="Tic-Tac-Toe Game", font=("comicsansms", 15, "bold"))
+        self.label1.grid(row=0, column=1, columnspan=3)
+
+        self.gamestr = "X"
+
+        self.buttons = [[None for _ in range(3)] for _ in range(3)]
+
+        for i in range(3):
+            for j in range(3):
+                self.buttons[i][j] = tk.Button(master, text="", command=lambda i=i, j=j: self.write_it(i, j))
+                self.buttons[i][j].grid(row=i + 1, column=j + 1, ipadx=40, ipady=40)
+
+        self.reset_button = tk.Button(master, text="Reset", command=self.reset_game)
+        self.reset_button.grid(row=4, column=1, columnspan=3)
+
+    def write_it(self, i, j):
+        btn = self.buttons[i][j]
+        if btn['text'] == "":
+            btn.config(text=self.gamestr)
+            if self.gamestr == "X":
+                self.gamestr = "O"
+            else:
+                self.gamestr = "X"
+        self.checker()
+
+    def checker(self):
+        # Check rows
+        for i in range(3):
+            if self.buttons[i][0]['text'] == self.buttons[i][1]['text'] == self.buttons[i][2]['text'] != "":
+                self.display_winner(self.buttons[i][0]['text'])
+                return
+
+        # Check columns
+        for i in range(3):
+            if self.buttons[0][i]['text'] == self.buttons[1][i]['text'] == self.buttons[2][i]['text'] != "":
+                self.display_winner(self.buttons[0][i]['text'])
+                return
+
+        # Check diagonals
+        if self.buttons[0][0]['text'] == self.buttons[1][1]['text'] == self.buttons[2][2]['text'] != "":
+            self.display_winner(self.buttons[0][0]['text'])
+            return
+        if self.buttons[0][2]['text'] == self.buttons[1][1]['text'] == self.buttons[2][0]['text'] != "":
+            self.display_winner(self.buttons[0][2]['text'])
+            return
+
+        # Check if the game is a draw
+        if all(self.buttons[i][j]['text'] != "" for i in range(3) for j in range(3)):
+            self.display_message("The game is a draw!")
+
+    def display_winner(self, winner):
+        for i in range(3):
+            for j in range(3):
+                self.buttons[i][j].config(state=tk.DISABLED)
+
+        self.master.configure(bg="green")
+        self.display_message(f"{winner} wins!")
+
+    def display_message(self, message):
+        message_box = tk.messagebox.showinfo("Game Over", message)
+
+    def reset_game(self):
+        for i in range(3):
+            for j in range(3):
+                self.buttons[i][j].config(text="", state=tk.NORMAL)
+
+        self.master.configure(bg="white")
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = TicTacToeApp(root)
+    root.mainloop()

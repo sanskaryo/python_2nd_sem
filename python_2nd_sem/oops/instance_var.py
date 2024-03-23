@@ -10,3 +10,5 @@ obj1.print_name() # Output: John
 obj2.print_name() # Output: Jane
 
 
+
+

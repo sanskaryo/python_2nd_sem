@@ -1,6 +1,7 @@
 #  DIAMOND SHAPE ALGORITHM  ONLY IN PY 3 
 
 
+
 # M R O 
 
 class X :

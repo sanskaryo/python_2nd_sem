@@ -11,5 +11,10 @@ class B(A):
         
         
 obj = B()
-obj.Showdata()   # jab inherit kiya to vo over ride hogaya
+obj.Showdata() 
+obj.Showdata()
+
+# jab inherit kiya to vo over ride hogaya
+    
+    
     

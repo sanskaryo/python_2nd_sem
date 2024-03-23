@@ -28,7 +28,10 @@ class Student:
         grade = self.calculate_grade()
         print(f"Name: {self.name}, Age: {self.age}, Grade: {grade}")
 
+
 # main
 student1 = Student()
 student1.setdetail("Sanskar", 20, 95)
 student1.display_details()
+
+

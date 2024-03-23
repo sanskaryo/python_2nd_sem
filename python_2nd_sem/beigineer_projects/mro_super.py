@@ -7,6 +7,7 @@ class X :
 class A(X) :
     def disp(self):
         print('display from A')
+        super().disp()
         
         
 class B(X) :

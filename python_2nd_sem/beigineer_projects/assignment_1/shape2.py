@@ -13,7 +13,7 @@ class Rectangle(shape):
     def __init__(self,length,breadth):
         super().__init__(length,breadth)
         
-        
+    
 class square(shape):
     def __init__(self,side):
         super().__init__(side,side)

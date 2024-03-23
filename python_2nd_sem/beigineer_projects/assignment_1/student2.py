@@ -5,7 +5,7 @@ class Student:
         self.grade = grade
 
     def display_details(self):
-        return f"Name: {self.name}, Age: {self.age}, Grade: {self.grade}"
+        print(f"Name: {self.name}, Age: {self.age}, Grade: {self.grade}")
 
     def calculate_grade(self, percentage):
         if percentage >= 90:
@@ -23,7 +23,8 @@ student1 = Student("Sanskar", 20, "Sophomore")
 student2 = Student("Shiv kumar", 19, "Sophomore")
 
 
-print(student1.display_details())
+
+student1.display_details()
 print(student2.display_details())
 
 print(student1.calculate_grade(85))

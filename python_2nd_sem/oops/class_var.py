@@ -16,3 +16,6 @@ obj1 = MyClass()
 obj2 = MyClass()
 obj1.print_class_variable() # Output: 2
 obj2.print_class_variable() # Output: 2
+
+obj2 = MyClass()
+obj2.print_class_variable()

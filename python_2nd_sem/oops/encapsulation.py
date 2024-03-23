@@ -10,6 +10,9 @@ class Student:
         self.__name=name 
 
 obj = Student()
-obj.setname("Test1")
+obj.setname("selfie")
 name=obj.getname()
 print(name)
+
+
+

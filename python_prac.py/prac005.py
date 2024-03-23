@@ -16,3 +16,5 @@ def apna_fun(x):
     
     
 map(10)
+
+

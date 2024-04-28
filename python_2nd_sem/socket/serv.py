@@ -10,7 +10,7 @@ s.listen(1)
 print('waiting for connections')
 cl, address = s.accept()
 
-# cl.send(b'Welcome to GLA Local Server')
 data = cl.recv(1024)
 print('Data Recieve From Client', data)
 cl.close()
+
